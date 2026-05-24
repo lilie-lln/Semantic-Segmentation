@@ -14,7 +14,7 @@ This API supports binary segmentation tasks using both custom Residual U-Net arc
 - **FastAPI Framework:** High performance async image inference endpoints.
 - **Dual Architectures:** Supported options include:
   - `unet`: A custom U-Net network featuring residual blocks (`ResBlock`).
-  - `resnet34_unet`: A U-Net decoder integrated with a ResNet34 feature extractor.
+  - `resnet34_unet`: An U-Net decoder integrated with a ResNet34 feature extractor.
 - **Dynamic Preprocessing:** Images are automatically rescaled to $256 \times 256$ pixels, processed, and evaluated through a pixel threshold ($> 0.5$).
 - **Dockerized:** Fully containerized setup via `python:3.11-slim` for hassle-free deployments.
 
