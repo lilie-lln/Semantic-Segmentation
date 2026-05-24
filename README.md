@@ -4,7 +4,8 @@
 ![Framework](https://img.shields.io/badge/framework-FastAPI-green)
 ![Deep Learning](https://img.shields.io/badge/backend-PyTorch-orange)
 
-A lightweight production-ready FastAPI application serving Semantic Segmentation models. This API supports binary segmentation tasks using both custom Residual U-Net architectures and ResNet34 backbone networks, handling real-time image preprocessing and mask generation.
+A lightweight production-ready FastAPI application serving Semantic Segmentation models. 
+This API supports binary segmentation tasks using both custom Residual U-Net architectures and ResNet34 backbone networks, handling real-time image preprocessing and mask generation.
 
 ---
 
