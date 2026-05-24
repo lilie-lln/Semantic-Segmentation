@@ -37,5 +37,5 @@ This API supports binary segmentation tasks using both custom Residual U-Net arc
 │   ├── inference.py       # Preprocessing & inference pipeline
 │   ├── utils.py           # Model loading routines
 ├── Dockerfile             # Docker image configuration
-├── requirements.txt       # App dependencies
+├── requirements.txt       
 └── .gitignore
