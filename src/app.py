@@ -7,13 +7,28 @@ from PIL import Image
 from inference import predict_mask
 from utils import load_model
 
+from huggingface_hub import hf_hub_download
+
 app = FastAPI()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# MODEL_PATHS = {
+#     "unet": "../saved_models/unet/best_model.pth",
+#     "resnet34_unet": "../saved_models/resnet34_unet/best_model.pth",
+# }
+
+MODEL_REPO = "Jolie11/semantic-segmentation-models"
+
 MODEL_PATHS = {
-    "unet": "../saved_models/unet/best_model.pth",
-    "resnet34_unet": "../saved_models/resnet34_unet/best_model.pth",
+    "unet": hf_hub_download(
+        repo_id=MODEL_REPO,
+        filename="unet.pth",
+    ),
+    "resnet34_unet": hf_hub_download(
+        repo_id=MODEL_REPO,
+        filename="resnet34_u.pth",
+    ),
 }
 
 models = {
