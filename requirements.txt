@@ -1,6 +1,6 @@
-fastapi
-uvicorn[standard]
-python-multipart
-pillow
-numpy
-huggingface_hub
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32
+pillow==12.3.0
+numpy==2.5.2
+huggingface_hub==2.0.0
