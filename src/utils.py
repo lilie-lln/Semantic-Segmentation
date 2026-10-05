@@ -24,3 +24,4 @@ def load_model(model_name, model_path, device):
     model.eval()
 
     return model
+
