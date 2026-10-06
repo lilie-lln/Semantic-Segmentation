@@ -99,9 +99,8 @@ python train.py
 ```
 
 Best model (highest validation Dice) is saved as `best_model.pth`.  
-A `last_checkpoint.pth` is also saved every epoch.
 
-### 4. Offline inference (optional)
+### 4. Offline inference 
 
 ```bash
 # U-net
@@ -145,7 +144,7 @@ After starting the service, open the interactive demo at:
 
 Upload an image and select a model (`unet` or `resnet34_unet`) to generate the segmentation mask.
 
-![Gradio Demo](assets/demo.jpeg)
+![Gradio Demo](assets/demo.jpg)
 
 
 
