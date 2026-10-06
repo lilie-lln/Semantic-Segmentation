@@ -41,14 +41,6 @@ docker run --gpus all -p 8000:8000 semantic-segmentation
 
 > The Dockerfile uses `pytorch/pytorch:2.14.0-cuda13.2-cudnn9-runtime` as the base image.
 
-###
-<img width="528" height="740" alt="ez" src="https://github.com/user-attachments/assets/02bb7dad-ac69-49bf-b7b0-0ad4f16b32f2" />
-
-
-
-### GET `/`
-
-Returns service status and the list of available models.
 
 ## Model Details
 
