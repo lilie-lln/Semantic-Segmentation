@@ -41,25 +41,10 @@ docker run --gpus all -p 8000:8000 semantic-segmentation
 
 > The Dockerfile uses `pytorch/pytorch:2.14.0-cuda13.2-cudnn9-runtime` as the base image.
 
-## API Usage
+###
+<img width="528" height="740" alt="ez" src="https://github.com/user-attachments/assets/02bb7dad-ac69-49bf-b7b0-0ad4f16b32f2" />
 
-### POST `/predict`
 
-| Parameter     | Type | Description                              |
-|---------------|------|------------------------------------------|
-| `file`        | file | Input image (required)                   |
-| `model_name`  | form | `unet` or `resnet34_unet` (default: `unet`) |
-
-Returns a PNG binary mask.
-
-Example with curl:
-
-```bash
-curl -X POST "http://localhost:8000/predict" \
-  -F "file=@your_image.jpg" \
-  -F "model_name=unet" \
-  --output mask.png
-```
 
 ### GET `/`
 
