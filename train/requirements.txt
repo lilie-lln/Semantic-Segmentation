@@ -1,0 +1,12 @@
+# Python version: 3.9 (managed by conda)
+
+# PyTorch and related packages (CUDA 11.6)
+torch==1.13.1+cu116
+torchvision==0.14.1+cu116
+torchaudio==0.13.1
+--extra-index-url https://download.pytorch.org/whl/cu116
+
+# Other dependencies
+numpy==1.24.4
+pillow
+tqdm
