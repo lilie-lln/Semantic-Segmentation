@@ -1,41 +1,60 @@
+
 # Semantic Segmentation API
 
-![Python Version](https://img.shields.io/badge/python-3.11-blue)
-![Framework](https://img.shields.io/badge/framework-FastAPI-green)
-![Deep Learning](https://img.shields.io/badge/backend-PyTorch-orange)
+A FastAPI service for binary semantic segmentation inference.  
+It supports two U-Net-based architectures and includes a Gradio web interface.
 
-A lightweight production-ready FastAPI application serving Semantic Segmentation models. 
-This API supports binary segmentation tasks using both custom Residual U-Net architectures and ResNet34 backbone networks, handling real-time image preprocessing and mask generation.
-
----
+Model weights are hosted on Hugging Face:  
+[`Jolie11/semantic-segmentation-models`](https://huggingface.co/Jolie11/semantic-segmentation-models)
 
 ## Features
 
-- **FastAPI Framework:** High performance async image inference endpoints.
-- **Dual Architectures:** Supported options include:
-  - `unet`: A custom U-Net network featuring residual blocks (`ResBlock`).
-  - `resnet34_unet`: An U-Net decoder integrated with a ResNet34 feature extractor.
-- **Dynamic Preprocessing:** Images are automatically rescaled to $256 \times 256$ pixels, processed, and evaluated through a pixel threshold ($> 0.5$).
-- **Dockerized:** Fully containerized setup via `python:3.11-slim` for hassle-free deployments.
+- Two available models:
+  - `unet`: Standard U-Net with DoubleConv blocks and skip connections
+  - `resnet34_unet`: ResNet34 encoder + U-Net style decoder
+- Input images are resized to 256×256 for inference, then restored to the original size
+- Binary mask generated using sigmoid + 0.5 threshold
+- REST API endpoint (`/predict`) and Gradio demo (`/demo`)
+- Supports both CPU and CUDA
 
----
-
-## Repository Structure
-
+## Project Structure
 
 ```text
-├── saved_models/          
-│   ├── unet/
-│   │   └── best_model.pth
-│   └── resnet34_unet/
-│       └── best_model.pth
 ├── src/
 │   ├── models/
-│   │   ├── unet.py
-│   │   └── resnet34_unet.py
-│   ├── app.py             # FastAPI entrypoint
-│   ├── inference.py       # Preprocessing & inference pipeline
-│   ├── utils.py           # Model loading routines
-├── Dockerfile             # Docker image configuration
-├── requirements.txt       
+│   │   ├── unet.py              # Standard U-Net
+│   │   └── resnet34_unet.py     # ResNet34-UNet
+│   ├── app.py                   # FastAPI + Gradio entry point
+│   ├── inference.py             # Preprocessing and inference
+│   └── utils.py                 # Model loading utilities
+├── Dockerfile
+├── requirements.txt
 └── .gitignore
+```
+
+### Docker
+
+```bash
+docker build -t semantic-segmentation .
+docker run --gpus all -p 8000:8000 semantic-segmentation
+```
+
+> The Dockerfile uses `pytorch/pytorch:2.14.0-cuda13.2-cudnn9-runtime` as the base image.
+
+
+## Model Details
+
+- **unet**: Classic U-Net architecture using DoubleConv (Conv → BN → ReLU) blocks and skip connections.
+- **resnet34_unet**: Custom ResNet34 encoder combined with a U-Net style decoder.
+
+Both models output a single channel (binary segmentation). During inference, `torch.sigmoid` is applied followed by a 0.5 threshold.
+
+## Dependencies
+
+Main packages (see `requirements.txt` for the full list):
+
+- FastAPI / Uvicorn
+- PyTorch (provided by the Docker base image)
+- Pillow / NumPy
+- Gradio
+- huggingface_hub
