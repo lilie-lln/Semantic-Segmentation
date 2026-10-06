@@ -25,12 +25,12 @@ Model weights are available on Hugging Face:
 │   │   ├── unet.py
 │   │   ├── resnet34_unet.py
 │   │   └── residual_unet.py
-│   ├── train.py                    # Train resnet34_unet
-│   ├── train_u.py                  # Train unet
+│   ├── train.py                    
+│   ├── train_u.py                  
 │   ├── evaluate.py
-│   ├── inference.py                # Offline inference (resnet34_unet)
-│   ├── inf_u.py                    # Offline inference (unet)
-│   ├── oxford_pet.py               # Dataset & transforms
+│   ├── inference.py                
+│   ├── inf_u.py                    
+│   ├── oxford_pet.py               
 │   ├── utils.py
 │   └── requirements.txt
 │
